@@ -17,8 +17,7 @@ from aiogram.types import (
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-# Telegram ID менеджера.
-# ЗАМЕНИ 123456789 на свой Telegram ID.
+# ЗАМЕНИ НА СВОЙ TELEGRAM ID
 ADMIN_ID = 123456789
 
 
@@ -35,10 +34,11 @@ dp = Dispatcher()
 
 
 # =========================================================
-# УСЛУГИ
+# ОСНОВНЫЕ УСЛУГИ
 # =========================================================
 
 SERVICES = {
+
     "car": {
         "name": "🚗 Дизайн обклейки авто",
         "description": (
@@ -48,19 +48,12 @@ SERVICES = {
         )
     },
 
-    "booklet": {
-        "name": "📖 Буклет/Журнал — 1 стр.",
-        "description": (
-            "Дизайн одной страницы буклета или журнала "
-            "с учётом вашего текста, изображений и фирменного стиля."
-        )
-    },
-
     "vk": {
         "name": "VK Оформление ВКонтакте",
         "description": (
-            "Оформление сообщества ВКонтакте в едином стиле: "
-            "визуальная концепция, элементы оформления и графика."
+            "Оформление сообщества ВКонтакте в едином стиле.\n\n"
+            "Разработка визуальной концепции, графики и "
+            "необходимых элементов оформления."
         )
     },
 
@@ -68,8 +61,8 @@ SERVICES = {
         "name": "💬 Консультация — 1 ч 30 мин",
         "description": (
             "Консультация продолжительностью 1 час 30 минут.\n\n"
-            "Можно обсудить дизайн, фирменный стиль, упаковку, "
-            "брендинг и другие вопросы."
+            "Можно обсудить дизайн, фирменный стиль, брендинг, "
+            "упаковку, полиграфию и другие вопросы."
         )
     },
 
@@ -81,27 +74,19 @@ SERVICES = {
         )
     },
 
-    "printing": {
-        "name": "🖨️ Разработка полиграфии",
-        "description": (
-            "Создание дизайна полиграфической продукции: "
-            "листовки, рекламные материалы и другие печатные изделия."
-        )
-    },
-
     "strategy": {
         "name": "🎯 Бренд-стратегия",
         "description": (
-            "Разработка стратегии развития бренда и его визуального "
-            "и смыслового позиционирования."
+            "Разработка стратегии развития бренда, "
+            "его позиционирования и визуального направления."
         )
     },
 
     "naming": {
         "name": "✏️ Нейминг",
         "description": (
-            "Разработка названия для компании, продукта, проекта "
-            "или нового бренда."
+            "Разработка названия для компании, продукта, "
+            "проекта или нового бренда."
         )
     },
 
@@ -111,45 +96,69 @@ SERVICES = {
             "Создание полноценного фирменного стиля и брендбука "
             "с правилами использования элементов бренда."
         )
-    },
+    }
+}
 
-    "eurobooklet": {
-        "name": "📄 Евробуклет — 1/2/3 фальца (сгиба)",
-        "description": (
-            "Разработка дизайна евробуклета с 1, 2 или 3 фальцами "
-            "(сгибами)."
-        )
-    },
+
+# =========================================================
+# ПОЛИГРАФИЯ
+# =========================================================
+
+PRINTING_SERVICES = {
 
     "business_card": {
-        "name": "💳 Визитка",
+        "name": "📇 Визитка",
         "description": (
             "Разработка дизайна визитной карточки "
             "в соответствии с вашим стилем и задачами."
         )
     },
 
-    "cup": {
-        "name": "🥤 Дизайн стакана",
+    "flyer": {
+        "name": "📄 Листовка",
         "description": (
-            "Создание дизайна стакана для бренда, кафе, ресторана "
-            "или другого проекта."
+            "Дизайн рекламной или информационной листовки "
+            "для печати."
         )
     },
 
-    "presentation": {
-        "name": "📊 Презентация — 1 слайд",
+    "flyer_small": {
+        "name": "📋 Флаер",
         "description": (
-            "Дизайн одного слайда презентации "
-            "с аккуратной компоновкой текста, графики и изображений."
+            "Разработка дизайна флаера для рекламы, "
+            "мероприятий, акций или специальных предложений."
         )
     },
 
-    "menu": {
-        "name": "🍽️ Дизайн меню",
+    "booklet": {
+        "name": "📖 Буклет",
         "description": (
-            "Разработка дизайна меню для кафе, ресторана, бара "
-            "или другого заведения."
+            "Разработка дизайна буклета с учётом текста, "
+            "изображений и фирменного стиля."
+        )
+    },
+
+    "magazine": {
+        "name": "📰 Журнал",
+        "description": (
+            "Разработка дизайна страниц журнала "
+            "и их визуального оформления."
+        )
+    },
+
+    "eurobooklet": {
+        "name": "📑 Евробуклет — 1/2/3 фальца",
+        "description": (
+            "Разработка дизайна евробуклета "
+            "с 1, 2 или 3 фальцами (сгибами)."
+        )
+    },
+
+    "poster": {
+        "name": "🖼️ Плакат",
+        "description": (
+            "Разработка дизайна плаката для рекламы, "
+            "мероприятия или информационной кампании."
         )
     },
 
@@ -159,18 +168,93 @@ SERVICES = {
             "Разработка дизайна подарочного сертификата "
             "в фирменном стиле."
         )
+    },
+
+    "menu": {
+        "name": "🍽️ Меню",
+        "description": (
+            "Разработка дизайна меню для кафе, ресторана, "
+            "бара или другого заведения."
+        )
+    },
+
+    "label": {
+        "name": "🏷️ Этикетка",
+        "description": (
+            "Разработка дизайна этикетки для продукции "
+            "с учётом требований к печати."
+        )
+    },
+
+    "sticker": {
+        "name": "🔖 Наклейка",
+        "description": (
+            "Разработка дизайна наклейки для бренда, "
+            "товара, упаковки или рекламных целей."
+        )
+    },
+
+    "catalog": {
+        "name": "🗂️ Каталог",
+        "description": (
+            "Разработка дизайна каталога продукции, "
+            "товаров или услуг."
+        )
+    },
+
+    "brochure": {
+        "name": "📚 Брошюра",
+        "description": (
+            "Разработка дизайна брошюры "
+            "с оформлением текста и графики."
+        )
+    },
+
+    "envelope": {
+        "name": "✉️ Конверт",
+        "description": (
+            "Разработка дизайна фирменного или "
+            "рекламного конверта."
+        )
+    },
+
+    "cup": {
+        "name": "🥤 Дизайн стакана",
+        "description": (
+            "Разработка дизайна стакана для кафе, "
+            "ресторана, бренда или мероприятия."
+        )
+    },
+
+    "other": {
+        "name": "➕ Другое",
+        "description": (
+            "Если вам нужно что-то, чего нет в списке, "
+            "выберите этот вариант и опишите задачу."
+        )
     }
 }
 
 
 # =========================================================
-# КЛАВИАТУРА С УСЛУГАМИ
+# ХРАНЕНИЕ СОСТОЯНИЯ ПОЛЬЗОВАТЕЛЕЙ
 # =========================================================
 
-def services_keyboard():
+# Здесь хранится выбранная пользователем услуга.
+user_orders = {}
+
+
+# =========================================================
+# ГЛАВНОЕ МЕНЮ
+# =========================================================
+
+def main_menu_keyboard():
+
     buttons = []
 
+    # Основные услуги
     for service_id, service in SERVICES.items():
+
         buttons.append([
             InlineKeyboardButton(
                 text=service["name"],
@@ -178,34 +262,83 @@ def services_keyboard():
             )
         ])
 
-    return InlineKeyboardMarkup(inline_keyboard=buttons)
+    # Полиграфия отдельной кнопкой
+    buttons.append([
+        InlineKeyboardButton(
+            text="🖨️ Разработка полиграфии",
+            callback_data="printing_menu"
+        )
+    ])
+
+    return InlineKeyboardMarkup(
+        inline_keyboard=buttons
+    )
 
 
 # =========================================================
-# КЛАВИАТУРА УСЛУГИ
+# МЕНЮ ПОЛИГРАФИИ
 # =========================================================
 
-def service_keyboard(service_id):
+def printing_menu_keyboard():
+
+    buttons = []
+
+    for service_id, service in PRINTING_SERVICES.items():
+
+        buttons.append([
+            InlineKeyboardButton(
+                text=service["name"],
+                callback_data=f"printing:{service_id}"
+            )
+        ])
+
+    buttons.append([
+        InlineKeyboardButton(
+            text="⬅️ Назад к услугам",
+            callback_data="back_main"
+        )
+    ])
+
+    return InlineKeyboardMarkup(
+        inline_keyboard=buttons
+    )
+
+
+# =========================================================
+# КНОПКИ КОНКРЕТНОЙ УСЛУГИ
+# =========================================================
+
+def service_keyboard(service_id, printing=False):
+
+    prefix = "printing" if printing else "service"
+
     return InlineKeyboardMarkup(
         inline_keyboard=[
+
             [
                 InlineKeyboardButton(
                     text="📝 Заказать услугу",
-                    callback_data=f"order:{service_id}"
+                    callback_data=f"order:{prefix}:{service_id}"
                 )
             ],
+
             [
                 InlineKeyboardButton(
-                    text="⬅️ Назад к услугам",
-                    callback_data="back_services"
+                    text="⬅️ Назад",
+                    callback_data=(
+                        "back_printing"
+                        if printing
+                        else "back_main"
+                    )
                 )
             ]
+
         ]
     )
 
 
 # =========================================================
-# START
+# /START
 # =========================================================
 
 @dp.message(CommandStart())
@@ -215,18 +348,40 @@ async def start_command(message: Message):
         "Здравствуйте! 👋\n\n"
         "Мы — команда дизайнеров.\n"
         "Поможем создать дизайн под ваши задачи: "
-        "от визитки до полноценного фирменного стиля.\n\n"
+        "от полиграфии до полноценного фирменного стиля.\n\n"
         "Выберите интересующую вас услугу ниже 👇"
     )
 
     await message.answer(
         text,
-        reply_markup=services_keyboard()
+        reply_markup=main_menu_keyboard()
     )
 
 
 # =========================================================
-# НАЖАТИЕ НА УСЛУГУ
+# ОТКРЫТИЕ ПОЛИГРАФИИ
+# =========================================================
+
+@dp.callback_query(F.data == "printing_menu")
+async def open_printing_menu(callback: CallbackQuery):
+
+    text = (
+        "🖨️ <b>Разработка полиграфии</b>\n\n"
+        "Что именно вам нужно разработать?\n\n"
+        "Выберите подходящий вариант ниже 👇"
+    )
+
+    await callback.message.edit_text(
+        text,
+        reply_markup=printing_menu_keyboard(),
+        parse_mode="HTML"
+    )
+
+    await callback.answer()
+
+
+# =========================================================
+# ВЫБОР ОСНОВНОЙ УСЛУГИ
 # =========================================================
 
 @dp.callback_query(F.data.startswith("service:"))
@@ -235,10 +390,12 @@ async def service_selected(callback: CallbackQuery):
     service_id = callback.data.split(":", 1)[1]
 
     if service_id not in SERVICES:
+
         await callback.answer(
             "Услуга не найдена",
             show_alert=True
         )
+
         return
 
     service = SERVICES[service_id]
@@ -246,7 +403,8 @@ async def service_selected(callback: CallbackQuery):
     text = (
         f"<b>{service['name']}</b>\n\n"
         f"{service['description']}\n\n"
-        "Если хотите заказать эту услугу, нажмите кнопку ниже 👇"
+        "Если хотите заказать эту услугу, "
+        "нажмите кнопку ниже 👇"
     )
 
     await callback.message.edit_text(
@@ -259,53 +417,38 @@ async def service_selected(callback: CallbackQuery):
 
 
 # =========================================================
-# НАЗАД К СПИСКУ УСЛУГ
+# ВЫБОР УСЛУГИ ПОЛИГРАФИИ
 # =========================================================
 
-@dp.callback_query(F.data == "back_services")
-async def back_services(callback: CallbackQuery):
-
-    text = (
-        "Выберите интересующую вас услугу 👇"
-    )
-
-    await callback.message.edit_text(
-        text,
-        reply_markup=services_keyboard()
-    )
-
-    await callback.answer()
-
-
-# =========================================================
-# ЗАКАЗ УСЛУГИ
-# =========================================================
-
-@dp.callback_query(F.data.startswith("order:"))
-async def order_service(callback: CallbackQuery):
+@dp.callback_query(F.data.startswith("printing:"))
+async def printing_selected(callback: CallbackQuery):
 
     service_id = callback.data.split(":", 1)[1]
 
-    if service_id not in SERVICES:
+    if service_id not in PRINTING_SERVICES:
+
         await callback.answer(
             "Услуга не найдена",
             show_alert=True
         )
+
         return
 
-    service = SERVICES[service_id]
+    service = PRINTING_SERVICES[service_id]
 
-    # Сохраняем выбранную услугу для конкретного пользователя
-    user_orders[callback.from_user.id] = service_id
-
-    await callback.message.answer(
-        f"Вы выбрали:\n\n"
+    text = (
         f"<b>{service['name']}</b>\n\n"
-        "Теперь напишите одним сообщением, что именно вам нужно "
-        "и, если есть, укажите дополнительные пожелания.\n\n"
-        "Например:\n"
-        "«Нужно сделать дизайн визитки для строительной компании. "
-        "Есть логотип и фирменные цвета.»",
+        f"{service['description']}\n\n"
+        "Если хотите заказать эту услугу, "
+        "нажмите кнопку ниже 👇"
+    )
+
+    await callback.message.edit_text(
+        text,
+        reply_markup=service_keyboard(
+            service_id,
+            printing=True
+        ),
         parse_mode="HTML"
     )
 
@@ -313,14 +456,127 @@ async def order_service(callback: CallbackQuery):
 
 
 # =========================================================
-# ХРАНЕНИЕ СОСТОЯНИЯ ЗАКАЗОВ
+# НАЗАД В ГЛАВНОЕ МЕНЮ
 # =========================================================
 
-user_orders = {}
+@dp.callback_query(F.data == "back_main")
+async def back_main(callback: CallbackQuery):
+
+    text = (
+        "Выберите интересующую вас услугу 👇"
+    )
+
+    await callback.message.edit_text(
+        text,
+        reply_markup=main_menu_keyboard()
+    )
+
+    await callback.answer()
 
 
 # =========================================================
-# ПОЛУЧЕНИЕ СООБЩЕНИЯ ОТ КЛИЕНТА
+# НАЗАД В ПОЛИГРАФИЮ
+# =========================================================
+
+@dp.callback_query(F.data == "back_printing")
+async def back_printing(callback: CallbackQuery):
+
+    text = (
+        "🖨️ <b>Разработка полиграфии</b>\n\n"
+        "Что именно вам нужно разработать?\n\n"
+        "Выберите подходящий вариант ниже 👇"
+    )
+
+    await callback.message.edit_text(
+        text,
+        reply_markup=printing_menu_keyboard(),
+        parse_mode="HTML"
+    )
+
+    await callback.answer()
+
+
+# =========================================================
+# ЗАКАЗ ОСНОВНОЙ УСЛУГИ
+# =========================================================
+
+@dp.callback_query(F.data.startswith("order:service:"))
+async def order_main_service(callback: CallbackQuery):
+
+    service_id = callback.data.split(":", 2)[2]
+
+    if service_id not in SERVICES:
+
+        await callback.answer(
+            "Услуга не найдена",
+            show_alert=True
+        )
+
+        return
+
+    service = SERVICES[service_id]
+
+    user_orders[callback.from_user.id] = {
+        "name": service["name"],
+        "category": "Основная услуга"
+    }
+
+    await callback.message.answer(
+        f"Вы выбрали:\n\n"
+        f"<b>{service['name']}</b>\n\n"
+        "Теперь напишите одним сообщением, "
+        "что именно вам нужно и какие есть пожелания.\n\n"
+        "Например:\n"
+        "«Нужно разработать фирменный стиль "
+        "для новой компании. Есть логотип и "
+        "фирменные цвета.»",
+        parse_mode="HTML"
+    )
+
+    await callback.answer()
+
+
+# =========================================================
+# ЗАКАЗ ПОЛИГРАФИИ
+# =========================================================
+
+@dp.callback_query(F.data.startswith("order:printing:"))
+async def order_printing_service(callback: CallbackQuery):
+
+    service_id = callback.data.split(":", 2)[2]
+
+    if service_id not in PRINTING_SERVICES:
+
+        await callback.answer(
+            "Услуга не найдена",
+            show_alert=True
+        )
+
+        return
+
+    service = PRINTING_SERVICES[service_id]
+
+    user_orders[callback.from_user.id] = {
+        "name": service["name"],
+        "category": "Полиграфия"
+    }
+
+    await callback.message.answer(
+        f"Вы выбрали:\n\n"
+        f"<b>{service['name']}</b>\n\n"
+        "Теперь напишите одним сообщением, "
+        "что именно вам нужно и какие есть пожелания.\n\n"
+        "Например:\n"
+        "«Нужна визитка для компании. "
+        "Есть логотип, контакты и фирменные цвета.»",
+        parse_mode="HTML"
+    )
+
+    await callback.answer()
+
+
+# =========================================================
+# ПОЛУЧЕНИЕ ЗАЯВКИ
 # =========================================================
 
 @dp.message()
@@ -328,18 +584,23 @@ async def receive_order(message: Message):
 
     user_id = message.from_user.id
 
-    # Если пользователь не выбирал услугу
+    # -----------------------------------------------------
+    # Если пользователь ничего не выбирал
+    # -----------------------------------------------------
+
     if user_id not in user_orders:
 
         await message.answer(
             "Сначала выберите интересующую вас услугу 👇",
-            reply_markup=services_keyboard()
+            reply_markup=main_menu_keyboard()
         )
 
         return
 
-    service_id = user_orders[user_id]
-    service = SERVICES[service_id]
+    order = user_orders[user_id]
+
+    service_name = order["name"]
+    category = order["category"]
 
     username = (
         f"@{message.from_user.username}"
@@ -349,17 +610,21 @@ async def receive_order(message: Message):
 
     full_name = message.from_user.full_name
 
-    # =====================================================
-    # ЗАЯВКА МЕНЕДЖЕРУ
-    # =====================================================
+    # -----------------------------------------------------
+    # Сообщение менеджеру
+    # -----------------------------------------------------
 
     admin_text = (
         "🔔 <b>НОВАЯ ЗАЯВКА</b>\n\n"
-        f"👤 Клиент: {full_name}\n"
-        f"🔗 Username: {username}\n"
-        f"🆔 Telegram ID: <code>{user_id}</code>\n\n"
-        f"📌 <b>Услуга:</b>\n"
-        f"{service['name']}\n\n"
+
+        f"👤 <b>Клиент:</b> {full_name}\n"
+        f"🔗 <b>Username:</b> {username}\n"
+        f"🆔 <b>Telegram ID:</b> "
+        f"<code>{user_id}</code>\n\n"
+
+        f"📂 <b>Категория:</b> {category}\n"
+        f"📌 <b>Услуга:</b> {service_name}\n\n"
+
         f"💬 <b>Сообщение клиента:</b>\n"
         f"{message.text}"
     )
@@ -372,22 +637,26 @@ async def receive_order(message: Message):
             parse_mode="HTML"
         )
 
-        # =================================================
-        # ОТВЕТ КЛИЕНТУ
-        # =================================================
+        # -------------------------------------------------
+        # Ответ клиенту
+        # -------------------------------------------------
 
         await message.answer(
-            "✅ Спасибо! Ваша заявка отправлена менеджеру.\n\n"
-            "Менеджер ознакомится с сообщением и свяжется "
-            "с вами для уточнения деталей."
+            "✅ Спасибо!\n\n"
+            "Ваша заявка отправлена менеджеру.\n"
+            "Он ознакомится с ней и свяжется с вами "
+            "для уточнения деталей."
         )
 
-        # Удаляем выбранную услугу после отправки заявки
+        # Удаляем состояние заказа
         del user_orders[user_id]
 
     except Exception as error:
 
-        print("Ошибка отправки заявки:", error)
+        print(
+            "Ошибка отправки заявки менеджеру:",
+            error
+        )
 
         await message.answer(
             "❌ Не удалось отправить заявку менеджеру.\n\n"
@@ -401,9 +670,9 @@ async def receive_order(message: Message):
 
 async def main():
 
-    print("===================================")
+    print("======================================")
     print("      БОТ УСПЕШНО ЗАПУЩЕН")
-    print("===================================")
+    print("======================================")
 
     await dp.start_polling(bot)
 
