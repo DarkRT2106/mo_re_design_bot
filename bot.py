@@ -1,9 +1,6 @@
 import os
-import asyncio
 
-from aiogram import Bot, Dispatcher
-from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram import Bot, Dispatcher, executor, types
 
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -13,21 +10,17 @@ if not BOT_TOKEN:
 
 
 bot = Bot(token=BOT_TOKEN)
-dp = Dispatcher()
+dp = Dispatcher(bot)
 
 
-@dp.message(CommandStart())
-async def start(message: Message):
+@dp.message_handler(commands=["start"])
+async def start(message: types.Message):
     await message.answer(
         "Здравствуйте! 👋\n\n"
         "Бот успешно работает!"
     )
 
 
-async def main():
-    print("Бот запускается...")
-    await dp.start_polling(bot)
-
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    print("Бот запускается...")
+    executor.start_polling(dp, skip_updates=True)
