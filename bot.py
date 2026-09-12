@@ -11,7 +11,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # ЗАМЕНИ НА TELEGRAM ID АДМИНИСТРАТОРА
-ADMIN_ID = 123456789
+ADMIN_ID = 1218273433
 
 
 if not BOT_TOKEN:
